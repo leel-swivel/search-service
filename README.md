@@ -1,4 +1,4 @@
-# Booking-Service
+# Search-Service
 
 ## Requirements
 
