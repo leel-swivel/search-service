@@ -53,18 +53,4 @@ public class Controller {
                 ErrorResponseStatusType.INTERNAL_SERVER_ERROR.getCode());
         return new ResponseEntity<>(errorResponseWrapper, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    /**
-     * This method creates the empty data response for bad request.
-     *
-     * @param errorsResponseStatusType errorResponseStatusType
-     * @return bad request error response
-     */
-    protected ResponseEntity<ResponseWrapper> getErrorResponse(ErrorResponseStatusType errorsResponseStatusType) {
-        var errorResponseWrapper = new ErrorResponseWrapper(ResponseStatusType.ERROR,
-                errorsResponseStatusType.getMessage(), null,
-                translator.toLocale(ErrorResponseStatusType.getCodeString(errorsResponseStatusType.getCode())),
-                errorsResponseStatusType.getCode());
-        return new ResponseEntity<>(errorResponseWrapper, HttpStatus.BAD_REQUEST);
-    }
 }

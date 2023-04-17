@@ -36,7 +36,7 @@ public class SwaggerConfig {
     //Api information
     private ApiInfo generateAPIInfo() {
 
-        return new ApiInfo("Booking Service", "Implementing Swagger with SpringBoot Application", "1.0.0",
+        return new ApiInfo("Search Service", "Implementing Swagger with SpringBoot Application", "1.0.0",
                 "", getContacts(), "", "", new ArrayList<>());
     }
 
