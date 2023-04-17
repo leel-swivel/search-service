@@ -9,8 +9,7 @@ import lombok.Getter;
 public enum ErrorResponseStatusType {
 
 
-    INTERNAL_SERVER_ERROR(5000, "Internal server error."),
-    NO_HOTEL_FOUND(4001, "No hotel found in this area.");
+    INTERNAL_SERVER_ERROR(5000, "Internal server error.");
     private final int code;
     private final String message;
 

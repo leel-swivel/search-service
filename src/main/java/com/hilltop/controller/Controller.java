@@ -13,10 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public class Controller {
-    protected static final int DEFAULT_PAGE = 0;
-    protected static final int PAGE_MAX_SIZE = 250;
-    protected static final String DEFAULT_SORT = "updatedAt";
-
     protected final Translator translator;
 
     @Autowired

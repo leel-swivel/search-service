@@ -3,11 +3,9 @@ package com.hilltop.domain.request;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class RequestDtoTest {
     @Test
-    public void testIsRequiredAvailable() {
+    void testIsRequiredAvailable() {
         RequestDto requestDto = new RequestDto() {
             @Override
             public String toLogJson() {
@@ -20,7 +18,7 @@ class RequestDtoTest {
     }
 
     @Test
-    public void testIsNonEmpty() {
+    void testIsNonEmpty() {
         RequestDto requestDto = new RequestDto() {
             @Override
             public String toJson() {
