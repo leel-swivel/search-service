@@ -1,13 +1,18 @@
 package com.hilltop.service;
 
+import com.hilltop.domain.response.HotelListResponseDto;
+import com.hilltop.domain.response.HotelResponseDto;
 import com.hilltop.domain.response.RoomSearchResponseDto;
 import com.hilltop.domain.response.SearchRoomListResponseDto;
+import com.hilltop.enums.ResponseStatusType;
 import com.hilltop.exception.SearchServiceException;
+import com.hilltop.wrapper.HotelListResponseWrapper;
 import com.hilltop.wrapper.RoomListResponseWrapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
@@ -67,10 +72,21 @@ class SearchServiceTest {
 
         String hotelIdsUrlPrefix = "&hotelIds=123";
         String getRoomsUrl = "http://localhost:8084/room-service/api/v1/room/list-hotel-room-by?count=2&days=3" + hotelIdsUrlPrefix;
-        when(restTemplate.exchange(getRoomsUrl, HttpMethod.GET, null, RoomListResponseWrapper.class)).thenThrow(new RuntimeException());
-        SearchServiceException searchServiceException = assertThrows(SearchServiceException.class, () -> searchService.getRoomsByHotelIdWithPaxCountAndDays(HOTEL_IDS, DAY_COUNT, PAX_COUNT));
+        when(restTemplate.exchange(getRoomsUrl, HttpMethod.GET, null, RoomListResponseWrapper.class))
+                .thenThrow(new RuntimeException());
+        SearchServiceException searchServiceException = assertThrows(SearchServiceException.class,
+                () -> searchService.getRoomsByHotelIdWithPaxCountAndDays(HOTEL_IDS, DAY_COUNT, PAX_COUNT));
         assertEquals("Getting Search room was failed.", searchServiceException.getMessage());
 
+    }
+
+    @Test
+     void Should_Throw_SearchServiceException() {
+        String city = "City 1";
+        String getHotelIdUrl = "http://localhost:8083/hotel-service/api/v1/hotel/city/" + city;
+        when(restTemplate.exchange(getHotelIdUrl, HttpMethod.GET, null, HotelListResponseWrapper.class))
+                .thenThrow(new RuntimeException("Error"));
+        assertThrows(SearchServiceException.class, () -> searchService.getHotelsIdByCity(city));
     }
 
 }

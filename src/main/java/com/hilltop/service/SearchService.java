@@ -35,13 +35,8 @@ public class SearchService {
      * @return List of RoomSearchResponseDto
      */
     public List<RoomSearchResponseDto> getRoomSearch(String city, int dayCount, int paxCount) {
-        try {
-
-            List<String> hotelsIdByCity = getHotelsIdByCity(city);
-            return getRoomsByHotelIdWithPaxCountAndDays(hotelsIdByCity, dayCount, paxCount);
-        } catch (Exception e) {
-            throw new SearchServiceException("ERROR", e);
-        }
+        List<String> hotelsIdByCity = getHotelsIdByCity(city);
+        return getRoomsByHotelIdWithPaxCountAndDays(hotelsIdByCity, dayCount, paxCount);
     }
 
 
