@@ -8,7 +8,7 @@ import java.util.List;
 
 class HotelResponseDtoTest {
     @Test
-    public void testConstructorAndGetters() {
+    void testConstructorAndGetters() {
         String id = "1234";
         String name = "Example Hotel";
         String description = "This is an example hotel.";

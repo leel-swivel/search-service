@@ -20,7 +20,7 @@ class HotelListResponseDtoTest {
     }
 
     @Test
-    public void testToLogJson() {
+    void testToLogJson() {
         HotelResponseDto hotel1 = new HotelResponseDto("1234", "Example Hotel 1", "This is an example hotel 1.", "Example City 1", "123-456-7890", "hotel1@example.com", Arrays.asList("https://example.com/hotel1/image1.png", "https://example.com/hotel1/image2.png"));
         HotelResponseDto hotel2 = new HotelResponseDto("5678", "Example Hotel 2", "This is an example hotel 2.", "Example City 2", "123-456-7890", "hotel2@example.com", Arrays.asList("https://example.com/hotel2/image1.png", "https://example.com/hotel2/image2.png"));
 

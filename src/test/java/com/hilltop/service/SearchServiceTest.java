@@ -1,10 +1,7 @@
 package com.hilltop.service;
 
-import com.hilltop.domain.response.HotelListResponseDto;
-import com.hilltop.domain.response.HotelResponseDto;
 import com.hilltop.domain.response.RoomSearchResponseDto;
 import com.hilltop.domain.response.SearchRoomListResponseDto;
-import com.hilltop.enums.ResponseStatusType;
 import com.hilltop.exception.SearchServiceException;
 import com.hilltop.wrapper.HotelListResponseWrapper;
 import com.hilltop.wrapper.RoomListResponseWrapper;
@@ -12,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
@@ -62,7 +58,7 @@ class SearchServiceTest {
         ResponseEntity<RoomListResponseWrapper> responseEntity = ResponseEntity.ok(roomListResponseWrapper);
         when(restTemplate.exchange(getRoomsUrl, HttpMethod.GET, null, RoomListResponseWrapper.class)).thenReturn(responseEntity);
         List<RoomSearchResponseDto> result = searchService.getRoomsByHotelIdWithPaxCountAndDays(HOTEL_IDS, DAY_COUNT, PAX_COUNT);
-        assertEquals(result.size(), 1);
+        assertEquals(1, result.size());
         assertEquals(result.get(0), roomSearchResponseDto);
     }
 
@@ -81,7 +77,7 @@ class SearchServiceTest {
     }
 
     @Test
-     void Should_Throw_SearchServiceException() {
+    void Should_Throw_SearchServiceException() {
         String city = "City 1";
         String getHotelIdUrl = "http://localhost:8083/hotel-service/api/v1/hotel/city/" + city;
         when(restTemplate.exchange(getHotelIdUrl, HttpMethod.GET, null, HotelListResponseWrapper.class))
