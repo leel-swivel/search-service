@@ -48,8 +48,9 @@ public class SearchService {
      */
     public List<String> getHotelsIdByCity(String city) {
         try {
+            String trimCity = city.trim();
             String getHotelIdUrl = "http://localhost:8083/hotel-service/api/v1/hotel/city/%s";
-            String formattedURL = String.format(getHotelIdUrl, city);
+            String formattedURL = String.format(getHotelIdUrl, trimCity);
             ResponseEntity<HotelListResponseWrapper> result =
                     restTemplate.exchange(formattedURL, HttpMethod.GET, null, HotelListResponseWrapper.class);
             HotelListResponseDto hotelList = Objects.requireNonNull(result.getBody()).getData();
