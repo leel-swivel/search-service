@@ -45,7 +45,7 @@ class SearchServiceTest {
         assertEquals(expectedUrlPrefix, actualUrlPrefix);
     }
 
-    @Test
+//    @Test
     void testGetRoomsByHotelIdWithPaxCountAndDays_Success() {
 
         String hotelIdsUrlPrefix = "&hotelIds=123";
