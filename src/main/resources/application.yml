@@ -14,10 +14,10 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://174.129.84.80:8761/eureka
 
 logging:
   level:
     com.hilltop: ${LOG_LEVEL:DEBUG}
   file:
-    path: ${LOGPATH:/home/leel/Desktop/logs}
+    path: ${LOG-PATH:/home/ubuntu/log}
